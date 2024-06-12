@@ -1,0 +1,263 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Global Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  background-color: #fff;
+  color: whitesmoke;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo, .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img, .logo img {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.navbar-brand span, .logo span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar a {
+  color: #0a0a0a;
+  text-decoration: none;
+  padding: 5px 15px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover, .navbar a:focus {
+  color: red;
+}
+
+/* Navbar Navigation */
+.navbar-menu-wrapper, .navbar-nav, .navbar-nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu-wrapper {
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.navbar-nav {
+  list-style: none;
+  margin: 0;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.navbar-nav-right {
+  margin-left: auto;
+}
+
+/* Dropdown Menu */
+.nav-item.dropdown:hover .navbar-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+}
+
+.navbar-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.navbar-dropdown a {
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+/* Profile Image and Text */
+.nav-profile-img img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.nav-profile-text p {
+  color: black;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+/* Modal Header */
+.modal-header {
+  background: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+}
+
+.modal-title {
+  margin: 0 auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-toggler {
+    display: block;
+    border: none;
+    background-color: transparent;
+  }
+
+  .navbar-menu-wrapper, .navbar-nav, .navbar-nav-right, .navbar {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+  }
+
+  .navbar-dropdown {
+    position: static;
+  }
+}
+
+/* Additional Styles */
+.img-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#piechart {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+
+/* Footer CSS */
+.site-footer {
+    background-color: #f4f4f4;
+    color: #333333;
+    padding: 20px;
+    text-align: center;
+ /* Fixes footer to the bottom of the screen */
+    bottom: 0; /* Aligns footer at the bottom */
+    left: 0; /* Ensures footer stretches from the left edge */
+    width: 100%; /* Ensures footer stretches across the entire width of the viewport */
+    box-sizing: border-box; /* Ensures padding does not add to the width */
+    z-index: 1000; /* Ensures footer stays above other content */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    padding: 20px;
+    flex: 1; /* Allows flexible adjustment of each section within the footer */
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section form input,
+.footer-section form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+.footer-section form button {
+    padding: 10px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.footer-section a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer-social {
+    text-align: center; /* Center-aligns the content */
+    margin: 20px 0; /* Adds some space above and below the social section */
+}
+
+.footer-social h3 {
+    margin-bottom: 10px; /* Adds a little space between the heading and the icons */
+}
+
+.footer-social a {
+    margin: 0 10px; /* Adds horizontal space between each icon */
+    color: #007bff; /* Sets the icon color; adjust as needed */
+    font-size: 24px; /* Increase the size of icons; adjust as needed */
+}
+
+/* Optionally, if you want to change the icon color on hover */
+.footer-social a:hover {
+    color: #333; /* Darker shade on hover; adjust the color as needed */
+}
+
+.footer-bottom {
+    font-size: 14px;
+}
+
+/* Additional CSS to prevent content from being hidden behind the fixed footer */
+body {
+    padding-bottom: 120px; /* Adjust this value based on the height of your footer */
+}
+
