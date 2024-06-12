@@ -17,4 +17,4 @@ The findings from the project suggest that automated systems can greatly improve
 
 Keywords: Poultry Farm Management System, Information Management, Automation, Farm Operations, Data Migration.
 
-Source Code Repository: [Insert Repository Link Here]
+Source Code Repository: https://github.com/Nyakwar-Orera/EchoChick-Farm-
