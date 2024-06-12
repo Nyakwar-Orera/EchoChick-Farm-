@@ -2,9 +2,9 @@
 session_start();
 error_reporting(1);
 include('../includes/dbconnect.php');
-include('../includes/confirmlogin.php');
+include('../includes/confirmlogin1.php');
 check_login();
-if (strlen($_SESSION['adminid']==0)) 
+if (strlen($_SESSION['userid']==0)) 
 {
   header('location:logout.php');
 } else{
@@ -12,11 +12,11 @@ $pid=intval($_GET['id']);// product id
 }
 if(isset($_POST['submit']))
 {
-  $adminid=$_SESSION['adminid'];
+  $userid=$_SESSION['userid'];
   $productname=$_POST['productName'];
   $productimage1=$_FILES["productimage1"]["name"];
   move_uploaded_file($_FILES["productimage1"]["tmp_name"],"../chattels/images/profiles/".$_FILES["productimage1"]["name"]);
-  $sql="update  admin set Photo=:productimage1 where ID=:aid";
+  $sql="update  customer set Photo=:productimage1 where id=:aid";
   $query = $pdo->prepare($sql);
   $query->bindParam(':productimage1',$productimage1,PDO::PARAM_STR);
   $query->bindParam(':aid',$pid,PDO::PARAM_STR);
@@ -27,11 +27,15 @@ if(isset($_POST['submit']))
 
 <!DOCTYPE html>
 <html lang="en">
-  <?php include("../includes/head.php");?>
+<head>
+    <title>Profile Photo Update</title>
+    <link rel="stylesheet" href="../chattels/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../chattels/images/farmimages/favicon1.png">   
+  </head>
   <body>
     <div class="container-scroller">
       
-     <?php include("../includes/adminheader.php");?>
+     <?php include("../includes/custheader.php");?>
       
       <div class="container-fluid page-body-wrapper">
         
@@ -52,10 +56,10 @@ if(isset($_POST['submit']))
                     <br/>
                     <form class="form-horizontal row-fluid" name="insertproduct" method="post" enctype="multipart/form-data">
                       <?php
-                      $adminid=$_SESSION['adminid'];
-                      $sql="SELECT * from  admin where ID=:aid";
+                      $userid=$_SESSION['userid'];
+                      $sql="SELECT * from  customer where id=:aid";
                       $query = $pdo -> prepare($sql);
-                      $query->bindParam(':aid',$adminid,PDO::PARAM_STR);
+                      $query->bindParam(':aid',$userid,PDO::PARAM_STR);
                       $query->execute();
                       $results=$query->fetchAll(PDO::FETCH_OBJ);
                       $cnt=1;
@@ -118,3 +122,4 @@ if(isset($_POST['submit']))
    <?php include("../includes/foot.php");?>
   </body>
 </html>
+<?php  ?>

@@ -4,20 +4,20 @@ session_start();
 include('../includes/dbconnect.php');
 
 // Check if admin is logged in
-if (strlen($_SESSION['adminid']) == 0) {
+if (strlen($_SESSION['userid']) == 0) {
     header('location:logout.php');
     exit; // Stop the script after redirect
 }
 
 if (isset($_POST['submit'])) {
-    $adminid = $_SESSION['odmsaid'];
+    $userid = $_SESSION['userid'];
     $cpassword = $_POST['currentpassword']; // Keep as plain text for password_verify
     $newpassword = $_POST['newpassword']; // New password in plain text for password_hash
 
     // Prepare SQL to fetch the current hashed password from the database
-    $sql = "SELECT Password FROM admin WHERE ID=:adminid";
+    $sql = "SELECT Password FROM customer WHERE id=:userid";
     $query = $pdo->prepare($sql);
-    $query->bindParam(':adminid', $adminid, PDO::PARAM_STR);
+    $query->bindParam(':userid', $userid, PDO::PARAM_STR);
     $query->execute();
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -28,9 +28,9 @@ if (isset($_POST['submit'])) {
             $newpasswordHash = password_hash($newpassword, PASSWORD_DEFAULT);
 
             // Update the database with the new hashed password
-            $con = "UPDATE admin SET Password=:newpassword WHERE ID=:adminid";
+            $con = "UPDATE customer SET Password=:newpassword WHERE id=:userid";
             $chngpwd1 = $pdo->prepare($con);
-            $chngpwd1->bindParam(':adminid', $adminid, PDO::PARAM_STR);
+            $chngpwd1->bindParam(':userid', $userid, PDO::PARAM_STR);
             $chngpwd1->bindParam(':newpassword', $newpasswordHash, PDO::PARAM_STR);
             $chngpwd1->execute();
 
@@ -66,7 +66,7 @@ return true;
   <body>
     <div class="container-scroller">
       
-     <?php include("../includes/adminheader.php");?>
+     <?php include("../includes/custheader.php");?>
       
       <div class="container-fluid page-body-wrapper">
         
